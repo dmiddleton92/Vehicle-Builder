@@ -6,15 +6,15 @@ import Motorbike from "./Motorbike.js";
 import Wheel from "./Wheel.js";
 
 // define the Cli class
-class Cli {
-  // TODO: update the vehicles property to accept Truck and Motorbike objects as well
-  // TODO: You will need to use the Union operator to define additional types for the array
-  // TODO: See the AbleToTow interface for an example of how to use the Union operator
+class Cli { 
+  // TODO: update the vehicles property to accept Truck and Motorbike objects as well ** DONE
+  // TODO: You will need to use the Union operator to define additional types for the array ** DONE
+  // TODO: See the AbleToTow interface for an example of how to use the Union operator ** DONE 
   vehicles: (Car | Truck | Motorbike)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
-  // TODO: Update the constructor to accept Truck and Motorbike objects as well
+  // TODO: Update the constructor to accept Truck and Motorbike objects as well ** DONE
   constructor(vehicles: (Car | Truck | Motorbike)[]) {
     this.vehicles = vehicles;
   }
@@ -60,7 +60,7 @@ class Cli {
           type: 'list',
           name: 'vehicleType',
           message: 'Select a vehicle type',
-          // TODO: Update the choices array to include Truck and Motorbike
+          // TODO: Update the choices array to include Truck and Motorbike ** DONE
           choices: ['Car | Truck | Motorbike'],
         },
       ])
@@ -170,6 +170,9 @@ class Cli {
         },
       ])
       .then((answers) => {
+        const {vehicleType, color, make, model, year, weight, topSpeed, towingCapacity} = answers;
+        const vin = Cli.generateVin();
+        let newVehicle;
         // TODO: Use the answers object to pass the required properties to the Truck constructor
         // TODO: push the truck to the vehicles array
         // TODO: set the selectedVehicleVin to the vin of the truck
